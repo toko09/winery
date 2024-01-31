@@ -1,0 +1,22 @@
+<nav class="{{pseudoClassNav}}">
+    <h1 routerLink="home" queryParamsHandling="merge" class="navtitle navelements {{pseudoClassBorder}}"> 
+        {{ "title" | transloco }} </h1>
+    <h3  routerLink="company" queryParamsHandling="merge" class="navitem navelements {{pseudoClassBorder}} " >
+        {{"company" | transloco}}</h3>
+    <h3  routerLink="products" queryParamsHandling="merge"  class="navitem navelements {{pseudoClassBorder}}" >
+        {{"products" | transloco}}</h3>
+    <h3  routerLink="contact" queryParamsHandling="merge"  class="navitem navelements {{pseudoClassBorder}}" >
+        {{"contact" | transloco}}</h3>
+    
+    <button class="btnlang">
+        <i class="fa-solid fa-globe"></i>
+        <div class="dropdown">
+            <img (click)="changeLang('en')" class="flag" src="../../../assets/flags/gb.svg" alt="">
+            <img (click)="changeLang('ge')" class="flag" src="../../../assets/flags/ge.svg" alt="">
+            <img (click)="changeLang('ru')" class="flag" src="../../../assets/flags/ru.svg" alt="">    
+        </div>
+    
+    </button>
+</nav>
+
+
