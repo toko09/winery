@@ -2,5 +2,6 @@
     "title":"WINERY",
     "company":"COMPANY",
     "products":"PRODUCTS",
-    "contact": "CONTACT"
+    "contact": "CONTACT",
+    "home" : "HOME"
 }

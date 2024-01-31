@@ -1,10 +1,28 @@
 .firstPhoto{
     width: 100%;
-    height: 90vh;
+    height: 95vh;
     background-image: url(../../../assets/123.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    filter: brightness(0.5);
+    filter: brightness(0.3);
+    transition: all 0.5s ease-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.firstDiv:hover .firstPhoto{
+    filter: brightness(0.7);
+}
+.firstDiv{
+    position: relative;
+}
+.firstPhoto__h1{
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translate(0,-50%);
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
 }

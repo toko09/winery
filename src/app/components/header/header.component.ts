@@ -32,15 +32,26 @@ export class HeaderComponent  {
     if (window.scrollY > 50) {       //
       this.pseudoClassNav = 'navFolded'
       this.pseudoClassBorder = 'blackBorder';
+      // const ham = this.el.nativeElement.querySelector('.hamButton"')
+      // ham.style.color = 'black'
      }
     else { 
       this.pseudoClassNav = 'navExpanded'
       this.pseudoClassBorder = 'whiteBorder';
     }
   }
+  openHamNav() {
+    const nav = this.el.nativeElement.querySelector('.navh3s');
+    const computedWidth = window.getComputedStyle(nav)
+      if (computedWidth.width === '0px') {
+        nav.style.width = '220px';
+      } else {
+        nav.style.width = '0';
+      }
+    }
 
 
-
+  
 
 }
   
