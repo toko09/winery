@@ -1,0 +1,44 @@
+footer{
+    border-top: 5px solid black;
+    height: 60vh;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+#mail{
+    display: grid;
+    place-items: center;
+}
+#adress{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+
+}
+#svgs{
+    display: flex;
+    gap: 20px;
+    font-size: 2.5rem;
+}
+#phone{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+@media (width<800px){
+    footer{
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        gap: 20px;
+        margin-bottom: 300px;
+    }
+    #mail{
+        grid-row: 2;
+    }
+
+
+
+}

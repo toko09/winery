@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
 import { LandingComponent } from './components/landing/landing.component';
-import { CompanyComponent } from './components/company/company.component';
-import { ProductsComponent } from './components/products/products.component';
-import { ContactComponent } from './components/contact/contact.component';
+import { CompanyComponent } from './components/router-outlet/company/company.component';
+import { ProductsComponent } from './components/router-outlet/products/products.component';
+import { ContactComponent } from './components/router-outlet/contact/contact.component';
 
 export const APP_ROUTES: Routes = [
     { path: 'home', component: LandingComponent },
