@@ -20,7 +20,7 @@ export class LandingComponent {
     const floatingText = this.el.nativeElement.querySelector('#floatingText');
     const textDivOffest = floatingText.offsetTop;
 
-    console.log (PhotoDivOffset, textDivOffest)
+    // console.log (PhotoDivOffset, textDivOffest)
     if (PhotoDivOffset <= scrollPosition + 150 ) { 
       this.renderer.setStyle(floatingPhoto, 'margin-top', '0');
     }

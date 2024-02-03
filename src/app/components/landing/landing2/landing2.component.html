@@ -1,0 +1,30 @@
+
+<div class="productDiv">
+    <img class="productPhotoCover" src="../../../../assets/images/winecave.jpg" alt="">
+
+    <div class="">
+        <button class="scrollLeft" (click)="moveLeft()"><i class="fa-solid fa-arrow-left"></i></button>
+        <button  class="scrollRight" (click)="moveRight()"> <i class="fa-solid fa-arrow-right"></i></button>
+        <div class="scrollDiv">
+            <div *ngFor="let slide of scrollPhotos| slice:0:crslNum; let slideIndex = index">
+                <img  class="wineBottles" [src]="scrollPhotos[indexCounter(slideIndex + currentIndex)]" alt="">
+            </div>
+            
+        </div>
+    </div>
+    
+    
+    
+    <button  (click)="switchToProd()" class="Allprod"> {{"see more" |  transloco}}</button>
+</div>
+
+
+
+<div class="companyDiv">
+    <image-slider></image-slider>
+    <div class="companyText">
+        <h2>{{"about us" | transloco }}</h2>
+        <p>{{"aboutusDescr" |transloco}}</p>
+        <button class="companybtn">{{"see more" | transloco}}</button>
+    </div>
+</div>

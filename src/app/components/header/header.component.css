@@ -5,7 +5,7 @@ nav{
     position: fixed;
     width: 100%;
     padding: 0 5%;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     z-index: 100;
     transition: all 500ms ease-out;
 }
@@ -44,7 +44,7 @@ nav{
     background-color: white;
 }
 .navtitle{
-    margin-right: 30%;
+    margin-right: 20%;
     font-size: 3rem;
     font-family: 'Freehand', cursive;
     letter-spacing: 10px;
@@ -52,9 +52,14 @@ nav{
 .navh3s{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     gap: 40px;
 }
-
+.shopBtn{
+    text-wrap: nowrap;
+    padding: 5px 10px;
+    border: 5px solid burlywood;
+}
 
 .btnlang{
     background-color: inherit;
@@ -66,16 +71,21 @@ nav{
     display: inline-block;
 }
 .dropdown{
-    display: none;
+    display:none;
     position: absolute;
     background-color: #f9f9f9;
     padding: 4px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
-.btnlang:hover .dropdown{
-    display: block;
-}
+
+
+
+  
+
+@media (hover: hover) {
+    .btnlang:hover { color: burlywood }
+  }
 .flag{
     width: 40px;
     height: 40px;
@@ -97,6 +107,18 @@ nav{
         letter-spacing: 8px;
         font-size: 2.5rem;
         margin-right: 10%;
+    }
+}
+@media (width < 1100px){
+    nav{
+        font-size: 1rem;
+    }
+    .navtitle{
+        letter-spacing:1px ;
+        margin-right: 2%;
+    }
+    .navh3s{
+        gap: 20px
     }
 }
 @media (width<800px){
@@ -135,6 +157,9 @@ nav{
     .navtitle{
         letter-spacing: 4px;
         font-size: 1.6remm;
+    }
+    .shopBtn{
+        padding: 10px 20px;
     }
 
     

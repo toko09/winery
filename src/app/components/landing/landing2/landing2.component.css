@@ -1,0 +1,140 @@
+.productDiv{
+    background-color: #1b1b1b;
+    height: 120vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.productPhotoCover{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 60px 0;
+    filter: blur(2px);
+    
+}
+
+.scrollDiv{
+    display: flex;
+    gap: 60px;
+    scroll-behavior:smooth;
+    padding: 80px;
+    background-color: red;
+
+
+}
+.wineBottles{
+    height: 340px;
+    width: 220px; 
+    z-index: 2;
+    position: relative;
+    background-color: #1b1b1b;
+    overflow: hidden; 
+    transition: all 0.3s ease-in-out;
+}
+.wineBottles:hover {
+    transform: scale(1.5);
+    cursor: pointer;
+}
+
+.scrollLeft{
+      left: 3vw;
+}
+.scrollRight{
+    right: 3vw;
+}
+.scrollLeft,.scrollRight{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    font-size: 70px;
+    color: white;
+    transition: all 0.3s ease-in-out;
+
+}
+.scrollRight:hover{
+    padding-right: 25px;
+    color: burlywood
+}
+.scrollLeft:hover{
+    padding-left: 25px;
+    color: burlywood
+}
+.scrollLeft:active,.scrollRight:active{
+    color: black;
+}
+
+
+.Allprod{
+    position: absolute;
+    bottom: 8%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    padding: 10px 20px;
+    background-color:transparent;
+    color: white;
+    font-size: 1.4rem;
+    border: 5px solid burlywood;
+    transition: border 0.3s ease-in;
+}
+.Allprod:hover{
+    border: 2px solid burlywood;
+    cursor: pointer;
+}
+
+.companyDiv{
+    height: 80vh;
+    background-color: #1b1b1b;
+    display: flex;
+    justify-content: center;
+}
+image-slider{
+    flex: 3;
+    margin: 0 40px;
+}
+.companyText{
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    margin: 40px;
+    gap: 40px;
+}
+.companyText>h2{
+    font-size: 32px;
+    
+}
+.companyText>p{
+    font-size: 20px;
+}
+.companybtn{
+    padding: 10px 20px;
+    background-color:transparent;
+    color: white;
+    font-size: 1.4rem;
+    border: 5px solid burlywood;
+    transition: border 0.3s ease-in;   
+}
+.companybtn:hover{
+    border: 2px solid burlywood;
+    cursor: pointer;
+}
+@media(width<800px){
+    .scrollLeft,.scrollRight{
+        font-size: 50px;
+    }
+    .companyDiv{
+        flex-direction: column;
+        height: fit-content;
+    }
+
+}

@@ -8,6 +8,7 @@
   </h1>
   <div class="navh3s  ">
     <h3
+      (click)="openHamNav()"
       id="homebtn"
       routerLink="home"
       queryParamsHandling="merge"
@@ -16,6 +17,7 @@
       {{ "home" | transloco }}
     </h3>
     <h3
+      (click)="openHamNav()"
       routerLink="company"
       queryParamsHandling="merge"
       class="navitem navelements {{ pseudoClassBorder }} "
@@ -23,6 +25,7 @@
       {{ "company" | transloco }}
     </h3>
     <h3
+      (click)="openHamNav()"
       routerLink="products"
       queryParamsHandling="merge"
       class="navitem navelements {{ pseudoClassBorder }}"
@@ -30,19 +33,28 @@
       {{ "products" | transloco }}
     </h3>
     <h3
+      (click)="openHamNav()"
       routerLink="contact"
       queryParamsHandling="merge"
       class="navitem navelements {{ pseudoClassBorder }}"
     >
       {{ "contact" | transloco }}
     </h3>
+    <h3
+      (click)="openHamNav()"
+      routerLink="shop"
+      queryParamsHandling="merge"
+      class="navitem shopBtn {{ pseudoClassBorder }}"
+    >
+      {{ "onlineShop" | transloco }}
+    </h3>
   </div>
   <button (click)="openHamNav()" class="hamButton">
     <i class="fa-solid fa-bars"></i>
   </button>
-  <button class="btnlang">
+  <button class="btnlang" (click)="openDropdown()">
     <i class="fa-solid fa-globe"></i>
-    <div class="dropdown">
+    <div class="dropdown"   >
       <img
         (click)="changeLang('en')"
         class="flag"
