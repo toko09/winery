@@ -1,0 +1,17 @@
+<div class="card-container" [class.flipped]="isFlipped" (mouseenter)="toggleFlip()" (mouseleave)="toggleFlip()">
+    <div class="card">
+      <div class="card-front">
+        <img [src]="cardData.imageUrl" alt="">
+        <h2>{{cardData.name | transloco}}</h2>
+      </div>
+      <div class="card-back">
+        <h2>{{'Name'   | transloco}} : {{cardData.name | transloco}}  </h2>
+        <p>{{"Color"   | transloco}} :    {{cardData.color | transloco}}</p>
+        <p>{{"Alcohol" | transloco}} : {{cardData.alcohol}}%</p>
+        <p>{{"Grape"   | transloco}} : {{cardData.grape | lineTranslate}} </p>
+        <p>{{"Aroma"   | transloco}} : {{cardData.aroma | lineTranslate}}</p>
+        <p>{{"Price"   | transloco}} :  {{cardData.price | currency :"GEL"}}  </p>
+        <p>{{"Year"    | transloco}} : {{cardData.year}}</p>
+      </div>
+    </div>
+  </div>

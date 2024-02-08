@@ -21,6 +21,8 @@ import { Landing2Component } from './components/landing/landing2/landing2.compon
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ImageSliderModule } from './modules/imageSlider/imageSlider.module';
+import { CardComponent } from './components/card/card.component';
+import { LineTranslatePipe } from './pipes/line-translate.pipe';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { ImageSliderModule } from './modules/imageSlider/imageSlider.module';
     ContactComponent,
     ShopComponent,
     Landing2Component,
+    CardComponent,
+    LineTranslatePipe,
 
   ],
   imports: [
@@ -40,7 +44,7 @@ import { ImageSliderModule } from './modules/imageSlider/imageSlider.module';
     BrowserAnimationsModule,
     HttpClientModule,
     TranslocoRootModule,
-    RouterModule.forRoot(APP_ROUTES),
+    RouterModule.forRoot(APP_ROUTES, {}),
     ImageSliderModule
   ],
   providers: [],

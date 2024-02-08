@@ -61,5 +61,12 @@ export class Landing2Component {
   }
   switchToProd() { 
     this.router.navigate(['products'], { queryParamsHandling: 'merge' });
+    window.scrollTo(0, 0);
+
+  }
+  switchToComp() { 
+    this.router.navigate(['company'], { queryParamsHandling: 'merge' });
+    window.scrollTo(0, 0);
+
   }
 }

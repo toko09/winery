@@ -1,3 +1,3 @@
-<div class="productsMain">
-
+<div *ngIf="AllProducts | async as all" class="productsMain">
+    <app-card  *ngFor="let wine of all" [cardData]="wine"></app-card>
 </div>

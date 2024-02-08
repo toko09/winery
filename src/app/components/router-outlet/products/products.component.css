@@ -1,4 +1,16 @@
 .productsMain{
     height: 100vh;
+    height: fit-content;
     background-color: #1b1b1b;
+    color: white;
+    
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 60px;
+    padding:250px  150px;
 }
+app-card{
+    background-color: black;
+}
+

@@ -14,7 +14,70 @@
     "name":"Name",
     "email": "Email",
     "phone": "Phone",
-    "message":"Message"
+    "message":"Message",
+
+    "Name":"Name",
+    "Color":"Color",
+    "Alcohol":"Acohol",
+    "Grape":"Grape",
+    "Aroma":"Aroma",
+    "Price":"Price",
+    "Year":"Year",
+
+    "Kisi":"Kisi",
+    "Kosi":"Kosi",
+    "Khikhvi":"Khikhvi",
+    "Tsolikauri":"Tsolikauri",
+    "Rkatsiteli":"Rkatsiteli",
+    "Saperavi":"Saperavi",
+    "Tvishi":"Tvishi",
+    "Usakhelauri":"Usakhelauri",
+    "Napareuli":"Napareuli",
+    "Khvanchkara":"Khvanchkara",
+    "Tsinandali":"Tsinandali",
+    "Mtsvane":"Mtsvane",
+    "Kindzmarauli":"Kindzmarauli",
+
+    "Dried Apricots" :"Dried Apricots",
+    "White Fruit" :"White Fruit",
+    "Dried Fruit" : "Dried Fruit",
+    "Berries" :"Berries",
+    "Vanilla" :"Vanilla",
+    "Citrus" :"Citrus",
+    "Floral" :"Floral",
+    "Strawberry" :" Strawberry",
+    "Peach" :"Peach",
+    "Blackberry":"Blackberry",
+    "Spice":"Spice",
+    "Apple":"Apple",
+    "Pear":"Pear",
+    "Black Cherry":"Black Cherry",
+    "Tobacco" :"Tobacco",
+    "Tropical Fruit": "Tropical Fruit",
+    "Plum":"Plum",
+    "Leather":"Leather",
+    "Raspberry":"Raspberry",
+    "Green Apple" :"Green Apple",
+    "Cherry" : "Cherry",
+    "Oak" : "Oak",
+
+    " White Fruit" : " White Fruit",
+    "Dry Fruit":"Dry Fruit",
+    "Cabernet Sauvignon":"Cabernet Sauvignon",
+    "Chardonnay" :"Chardonnay",
+    "Merlot":"Merlot",
+    "Sauvignon Blanc":"Sauvignon Blanc",
+    "Grenache":"Grenache",
+    "Shiraz":"Shiraz",
+    "Pinot Grigio": "Pinot Grigio",
+
+    "White" :"White",
+    "Red" :"Red",
+    "Rosé" :"Rosé",
+    "Amber":"Amber"
+
+
+ 
 
 }
 
