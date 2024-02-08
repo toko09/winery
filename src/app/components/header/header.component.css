@@ -1,3 +1,6 @@
+:root {
+    --a-border: 5px solid red;
+  }
 nav{
     display: flex;
     justify-content: space-around;
@@ -58,7 +61,39 @@ nav{
 .shopBtn{
     text-wrap: nowrap;
     padding: 5px 10px;
-    border: 5px solid burlywood;
+    position: relative;
+    margin-right: 10px;
+    
+}
+.shopBtn::before{
+    content: "";
+    position: absolute;
+    width: 0;
+    top: 0px;
+    left: -10px;
+    background-color: transparent;
+    transition: width 0.5s ease; 
+}
+.shopBtn::after{
+    content: "";
+    position: absolute;
+    width: 0;
+    bottom: 0px;
+    right: -10px;
+    background-color: transparent;
+    transition: width 0.5s ease; 
+}
+.shopBtn:hover::before {
+    border-bottom: 8px solid burlywood;
+    border-left: 8px solid burlywood;
+    width:  calc(100% + 12px);
+    height: 100%;
+}
+.shopBtn:hover::after{
+    border-right: 8px solid burlywood;
+    border-top: 8px solid burlywood;
+    width: calc(100% + 12px);
+    height: 100%;
 }
 
 .btnlang{
@@ -99,6 +134,7 @@ nav{
     display: none;
     
 }
+
 @media (width<1300px){
     nav{
         font-size: 1.2rem;
@@ -159,7 +195,11 @@ nav{
         font-size: 1.6remm;
     }
     .shopBtn{
-        padding: 10px 20px;
+        padding: 10px;
+        margin-left: 10%;
+        margin-top: 20px;
+        text-wrap:pretty;
+        overflow: hidden;
     }
 
     

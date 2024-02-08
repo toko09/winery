@@ -37,18 +37,21 @@ form{
     flex: 3;
     gap: 20px;
 }
-form>input, form>textarea{
-    width: 80%;   
-}
-input::placeholder,textarea::placeholder{
+input,textarea {
+    width: 80%;  
+    border-radius: 10px; 
     padding-left: 16px;
     color: black;
 }
+input{  
+    min-height: 40px;
+    padding:0 16px;
+}
+textarea{ 
+    padding:16px;   
+}
 input:hover,textarea:hover{
     border-color: transparent;
-}
-form>input{
-    min-height: 40px;
 }
 .submit{
     padding: 10px 20px;

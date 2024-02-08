@@ -14,36 +14,40 @@ export class HeaderComponent  {
     private render: Renderer2) { 
     
     let langCode = window.location.href.slice(-2);      //get url langcode
+    
     if (langCode === '0/') {                            //set lang query after creating 
       this.router.navigate([], { queryParams: { lang: 'en' } })
       langCode = 'en'; 
     }
     this.translocoService.setActiveLang(langCode);
   }
+
   dropdown = this.el.nativeElement.querySelector('.dropdown');
-  
-  isOpen = false
+  isOpenLangBar = false;
   openDropdown() {
     this.dropdown = this.el.nativeElement.querySelector('.dropdown');
-    console.log(this.isOpen)
-    if (this.isOpen) {
+    // console.log("langbar open =" + this.isOpenLangBar)
+    if (this.isOpenLangBar) {
       this.render.setStyle(this.dropdown, 'display', 'none');
-      this.isOpen = false
+      this.isOpenLangBar = false;
     }
     else { 
       this.render.setStyle(this.dropdown, 'display', 'block');
-      this.isOpen = true
+      setTimeout(() => { this.isOpenLangBar = true;},100)
     }
     
 
   }
 
+  switchPage(link: string) { 
+    this.router.navigate([link], { queryParamsHandling: 'merge' });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
   changeLang(code:string) {                        //changing language
     this.translocoService.setActiveLang(`${code}`);//
-    console.log(code)
+    // console.log(code)
     this.router.navigate([], { queryParams: { lang: code } });
-
   }
 
   
@@ -62,21 +66,43 @@ export class HeaderComponent  {
       this.pseudoClassBorder = 'whiteBorder';
     }
   }
+  mobileNav = false;
   openHamNav() {
     if (window.innerWidth < 800) { 
 
       const nav = this.el.nativeElement.querySelector('.navh3s');
-      const computedWidth = window.getComputedStyle(nav)
-      if (computedWidth.width === '0px') {
-        nav.style.width = '220px';
-      } else {
+      if (!this.mobileNav) {
+        nav.style.width = '220px';       
+        setTimeout(() => { this.mobileNav = true;},100)
+      }
+      else {
         nav.style.width = '0';
+        this.mobileNav = false
       }
     }
   }
 
+  @HostListener('document:click', ['$event'])
+  handleDocumentClick(event: MouseEvent) {
+    if (window.innerWidth < 800) { 
 
-  
+      const clickX = event.clientX;
+      
+      if (this.mobileNav && clickX > 220) { 
+        const nav = this.el.nativeElement.querySelector('.navh3s');
+        nav.style.width = '0';
+        this.mobileNav = false;
+        // this.isOpenLangBar = false
+        
+      }
+    }
+    if (this.isOpenLangBar) { 
+      this.openDropdown()
+    }
+      
+  }
+
+
 
 }
   

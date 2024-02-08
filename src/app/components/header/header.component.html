@@ -1,7 +1,6 @@
 <nav class="{{ pseudoClassNav }}">
   <h1
-    routerLink="home"
-    queryParamsHandling="merge"
+    (click)="switchPage('home')"
     class="navtitle navelements {{ pseudoClassBorder }}"
   >
     {{ "title" | transloco }}
@@ -9,41 +8,36 @@
   <div class="navh3s  ">
     <h3
       (click)="openHamNav()"
+      (click)="switchPage('home')"
       id="homebtn"
-      routerLink="home"
-      queryParamsHandling="merge"
       class="navitem navelements {{ pseudoClassBorder }}"
     >
       {{ "home" | transloco }}
     </h3>
     <h3
       (click)="openHamNav()"
-      routerLink="company"
-      queryParamsHandling="merge"
+      (click)="switchPage('company')"
       class="navitem navelements {{ pseudoClassBorder }} "
     >
       {{ "company" | transloco }}
     </h3>
     <h3
       (click)="openHamNav()"
-      routerLink="products"
-      queryParamsHandling="merge"
+      (click)="switchPage('products')"
       class="navitem navelements {{ pseudoClassBorder }}"
     >
       {{ "products" | transloco }}
     </h3>
     <h3
       (click)="openHamNav()"
-      routerLink="contact"
-      queryParamsHandling="merge"
+      (click)="switchPage('contact')"
       class="navitem navelements {{ pseudoClassBorder }}"
     >
       {{ "contact" | transloco }}
     </h3>
     <h3
       (click)="openHamNav()"
-      routerLink="shop"
-      queryParamsHandling="merge"
+      (click)="switchPage('shop')"
       class="navitem shopBtn {{ pseudoClassBorder }}"
     >
       {{ "onlineShop" | transloco }}
