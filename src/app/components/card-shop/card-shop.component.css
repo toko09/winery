@@ -1,0 +1,14 @@
+.card-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    padding: 40px 40px 40px 0;
+}
+.imgDiv>img{
+    height: 200px;
+    width: 140px;
+}
+.infoDiv>p{
+    width: 240px;
+}

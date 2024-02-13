@@ -2,7 +2,7 @@ import { Component, Input, input } from '@angular/core';
 import { Product } from '../../types';
 
 @Component({
-  selector: 'app-card',
+  selector: 'app-card-product',
   templateUrl: './card.component.html',
   styleUrl: './card.component.css'
 })

@@ -19,10 +19,12 @@ import { ShopComponent } from './components/online-shop/shop/shop.component';
 import { Landing2Component } from './components/landing/landing2/landing2.component';
 
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ImageSliderModule } from './modules/imageSlider/imageSlider.module';
-import { CardComponent } from './components/card/card.component';
+import { RangeSliderModule } from './modules/range-slider/range-slider.module';
+import { CardComponent } from './components/card-Product/card.component';
 import { LineTranslatePipe } from './pipes/line-translate.pipe';
+import { CardShopComponent } from './components/card-shop/card-shop.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -37,15 +39,18 @@ import { LineTranslatePipe } from './pipes/line-translate.pipe';
     Landing2Component,
     CardComponent,
     LineTranslatePipe,
+    CardShopComponent,
 
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
+    FormsModule,
     HttpClientModule,
     TranslocoRootModule,
     RouterModule.forRoot(APP_ROUTES, {}),
-    ImageSliderModule
+    ImageSliderModule,
+    RangeSliderModule
+  
   ],
   providers: [],
   bootstrap: [AppComponent]

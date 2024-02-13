@@ -1,6 +1,5 @@
 
-import { Component, ElementRef, OnDestroy, OnInit } from '@angular/core';
-import { SlideInterface } from '../../types/slide.interface';
+import { Component, ElementRef, Input, OnDestroy, OnInit, input } from '@angular/core';
 
 @Component({
   selector: 'image-slider',
@@ -9,15 +8,18 @@ import { SlideInterface } from '../../types/slide.interface';
 })
 export class ImageSliderComponent implements OnInit, OnDestroy {
 
+  @Input() imgArray !: string[];
+  @Input() sliderHeight !:number;
+
   constructor(private el: ElementRef) { }
   urlToFile = '../../../../../assets/images_for_slider_module'
-  slides: SlideInterface[] = [
-    { url: '../../../../../assets/images_for_slider_module/building_1.jpg', title: 'beach' },
-    { url: '../../../../../assets/images_for_slider_module/building_2.avif', title: 'boat' },
-    { url: '../../../../../assets/images_for_slider_module/building_3.jpg', title: 'forest' },
-    // { url: '/assets/CarouselImages/image-4.jpeg', title: 'city' },
-    // { url: '/assets/CarouselImages/image-5.jpeg', title: 'italy' },
-  ];
+
+  // imgArray: string[] = [
+  //    '../../../../../assets/images_for_slider_module/building_1.jpg',
+  //    '../../../../../assets/images_for_slider_module/building_2.avif',
+  //    '../../../../../assets/images_for_slider_module/building_3.jpg',
+  // ];
+  
   currentIndex: number = 0;
   timeoutId?: number;
 
@@ -38,7 +40,7 @@ export class ImageSliderComponent implements OnInit, OnDestroy {
   goToPrevious(): void {
     const isFirstSlide = this.currentIndex === 0;
     const newIndex = isFirstSlide
-      ? this.slides.length - 1
+      ? this.imgArray.length - 1
       : this.currentIndex - 1;
 
     this.resetTimer();
@@ -47,7 +49,7 @@ export class ImageSliderComponent implements OnInit, OnDestroy {
   }
 
   goToNext(): void {
-    const isLastSlide = this.currentIndex === this.slides.length - 1;
+    const isLastSlide = this.currentIndex === this.imgArray.length - 1;
     const newIndex = isLastSlide ? 0 : this.currentIndex + 1;
 
     this.resetTimer();
@@ -61,7 +63,7 @@ export class ImageSliderComponent implements OnInit, OnDestroy {
   }
 
   getCurrentSlideUrl() {
-    return `url('${this.slides[this.currentIndex].url}')`;
+    return `url('${this.imgArray[this.currentIndex]}')`;
   }
 
 }

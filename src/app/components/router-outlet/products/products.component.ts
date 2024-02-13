@@ -12,7 +12,7 @@ export class ProductsComponent {
   constructor(private productService: ProductsService) { 
     this.productService.getProducts()
   }
-  AllProducts = this.productService.AllProducts;
+  AllProducts$ = this.productService.AllProducts;
   
  
 }

@@ -1,0 +1,48 @@
+.range{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: burlywood;
+
+    
+}
+.line{
+    height: 5px;
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 8px; /*circles are 16 and line will be their center */
+}
+
+.min,.max{
+    position: absolute;
+    top: calc(50% - 8px);
+    z-index: 2;
+}
+.min{
+    left: 0;
+    color: red;
+}
+.max{
+    left: 200px;
+    color: blue;
+}
+.min:hover,.max:hover{
+    cursor: grabbing;
+}
+.valueMin,.valueMax{
+    position: absolute;
+    top: 50%;
+    height: 16px;
+}
+.valueMin{
+    left: -10px;
+    transform: translate(-100%, -50%);
+
+}
+.valueMax{
+    left: 200px;
+    transform: translate(100%, -50%);
+}

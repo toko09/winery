@@ -23,7 +23,7 @@ export class ProductsService {
       .get<Product[]>(`${this.apiUrl}`)
       .subscribe((response) => {
         this.AllProducts$.next(response)
-        console.log(response)
+        // console.log(response)
       });
   }
 }

@@ -8,6 +8,5 @@ export interface Product {
     color: string,
     aroma: string,
     grape: string,
-    year: number
-    
-  }
+    year: number 
+}

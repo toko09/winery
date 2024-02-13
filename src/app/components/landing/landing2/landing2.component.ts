@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class Landing2Component {
   constructor(private el: ElementRef, private router:Router) { }
-  scrollPhotos = [
+  scrollPhotos = [ //this is for wines scroll
     "../../../../assets/scrollPhotos/winery_dema_kisi.png",
     "../../../../assets/scrollPhotos/winery_dema_kosi.png",
     "../../../../assets/scrollPhotos/winery_dema_khikhvi.png",
@@ -17,6 +17,11 @@ export class Landing2Component {
     "../../../../assets/scrollPhotos/nanua_otskhanuri_2022.png",
     " "
   ];
+  slidesForModule: string[] = [ //this is for slider module
+    '../../../../../assets/images_for_slider_module/building_1.jpg', 
+    '../../../../assets/images_for_slider_module/building_2.avif',
+    'assets/images_for_slider_module/building_3.jpg', 
+ ];
   blankLink = '';
   currentIndex = 0; //currentIndex + slideIndex  
   crslNum = 3;

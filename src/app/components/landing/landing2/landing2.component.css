@@ -136,5 +136,8 @@ image-slider{
         flex-direction: column;
         height: fit-content;
     }
+    .productDiv{
+        height: 80vh;
+    }
 
 }

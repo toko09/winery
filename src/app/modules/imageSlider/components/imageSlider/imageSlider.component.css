@@ -1,7 +1,7 @@
 .slide {
   width: 100%;
   height: 100%;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   background-size: cover;
   background-position: center;
 }
@@ -31,9 +31,10 @@
 .slider {
   position: relative;
   width: 100%;
-  height: 350px;
+  /* height: 350px; */
   margin: auto;
-  margin-top: 30px;
+  /* margin-top: 30px; */
+  filter: brightness(0.8);
 }
 
 .dotsContainer {
