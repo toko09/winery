@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ProductsService } from '../../../services/products.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-shop',
@@ -22,9 +23,6 @@ export class ShopComponent {
   
 
   rangeSliderDisplay = 'none';
-  getRangeValues(values: number[]) {
-    // console.log(values)
-  }
   toggleRangeSlider() { 
     if (this.rangeSliderDisplay == 'none') {
       this.rangeSliderDisplay = 'block';
@@ -32,12 +30,16 @@ export class ShopComponent {
     else { 
       this.rangeSliderDisplay = 'none';
     }
-
+    
     
   }
-  searchText = 'text';
-  
-
+  searchText = '';
+  selectedColor = '';
+  selectedSizde = '';
+  filterWines(searchBy : string, value : string, price ?: number[]) { //if values R numbers we get seperate variable
+    this.productService.filteProducts(searchBy, value, price)
+  }
  
-
+  
+  
 }

@@ -26,7 +26,11 @@ export class ProductsService {
         // console.log(response)
       });
   }
-  filteProducts(searchBy: string, value: string) {
-      console.log('here')
+  filteProducts(searchBy: string, value: string,  price ?: number[]) {
+    console.log("Search By: " + searchBy, "Where values = " + value);
+    console.log(typeof value)
+    if (price != undefined) { 
+      console.log(price[0])
+    }
   }
 }
