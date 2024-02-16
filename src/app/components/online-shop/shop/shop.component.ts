@@ -32,8 +32,11 @@ export class ShopComponent {
     else { 
       this.rangeSliderDisplay = 'none';
     }
+
     
   }
+  searchText = 'text';
+  
 
  
 

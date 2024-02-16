@@ -26,4 +26,7 @@ export class ProductsService {
         // console.log(response)
       });
   }
+  filteProducts(searchBy: string, value: string) {
+      console.log('here')
+  }
 }
