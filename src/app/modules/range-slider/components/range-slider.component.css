@@ -38,11 +38,10 @@
     height: 16px;
 }
 .valueMin{
-    left: -10px;
-    transform: translate(-100%, -50%);
-
+    left: -25px;
+    top: 0;
 }
 .valueMax{
-    left: 200px;
-    transform: translate(100%, -50%);
+    left: 25px;
+    top: 0;
 }

@@ -77,7 +77,12 @@
     "Amber":"Amber",
 
     "MG": "MG",
-    "Liter":"Liter"
+    "Liter":"Liter",
+    
+    "Search Wine":"Search Wine",
+    "Wine color" :"Wine color",
+    "Bottle Size":"Bottle Size",
+    "Price Range":"Price Range" 
 
  
 

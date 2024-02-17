@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ProductsService } from '../../../services/products.service';
-import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-shop',
@@ -13,7 +12,7 @@ export class ShopComponent {
     'assets/shop-adv/wine_adv2.jpg',
     'assets/shop-adv/wine_adv3.jpg', 
   ];
-  working = true;
+  working = !false;
 
   constructor(private productService: ProductsService) { 
     this.productService.getProducts()
