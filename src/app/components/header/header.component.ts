@@ -12,6 +12,9 @@ export class HeaderComponent  {
     private router: Router,
     private el: ElementRef,
     private render: Renderer2) { 
+    //
+    //
+    //gotta fix this queryParams bro 
     
     let langCode = window.location.href.slice(-2);      //get url langcode
     

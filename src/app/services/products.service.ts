@@ -1,15 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from '../types';
-import { BehaviorSubject, filter, map} from 'rxjs';
+import { BehaviorSubject, Subscription, filter, map, takeUntil } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductsService {
   private apiUrl = 'assets/API/products.json'; // Path to your local JSON file
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private actRoute: ActivatedRoute) {}
+
+  private httpSubscription: Subscription = new Subscription();
+  private routerSubscription: Subscription = new Subscription();
 
   private AllProducts$ = new BehaviorSubject<Product[]>([]);
 
@@ -18,39 +22,43 @@ export class ProductsService {
   }
 
   getProducts() {
-
-    this.http
-      .get<Product[]>(`${this.apiUrl}`)
-      .subscribe((response) => {
-        this.AllProducts$.next(response)
-        // console.log(response)
-      });
+    this.http.get<Product[]>(`${this.apiUrl}`).subscribe((response) => {
+      this.AllProducts$.next(response);
+    });
   }
-  filteProducts(searchBy: string, value: string, price?: number[]) {
-    this.http
+  shopProducts() {
+    this.routerSubscription.unsubscribe();
+    this.httpSubscription.unsubscribe();
+
+    this.httpSubscription = this.http
       .get<Product[]>(`${this.apiUrl}`)
       .subscribe((response) => {
-        switch (searchBy) { 
-          case 'name': { 
-            this.AllProducts$.next(response.filter(products => products.name.toLowerCase() === value));           
-            break;
+        this.routerSubscription = this.actRoute.queryParams.subscribe(
+          (params) => {
+            // console.log(params['color'])
+            if (params['name']) {
+              response = response.filter((products) =>
+                products.name.toLocaleLowerCase().includes(params['name'])
+              );
+            }
+            if (params['size']) {
+              response = response.filter((products) => {}); //Nosize
+            }
+            if (params['color']) {
+              response = response.filter(
+                (products) => products.color == params['color']
+              );
+            }
+            if (params['priceStart']) {
+              const priceMin = parseFloat(params['priceStart']);
+              const priceMax = parseFloat(params['priceMax']);
+              response = response.filter((products) => {
+                return products.price > priceMin && products.price < priceMax;
+              });
+            }
           }
-          case 'color': { 
-            this.AllProducts$.next(response.filter(products => products.color === value))
-            break;
-          }
-          case 'size': {  //we dont have size opttion
-            this.AllProducts$.next(response.filter(products => products))
-            break;
-          }
-          default: { 
-            break;
-          }
-        }
-        if (price != undefined) { 
-          this.AllProducts$.next(response.filter(products => (products.price > price[0]) && products.price<price[1]))
-
-        }
+        );
+        this.AllProducts$.next(response);
       });
   }
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ProductsService } from '../../../services/products.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-shop',
@@ -14,8 +15,8 @@ export class ShopComponent {
   ];
   working = !false;
 
-  constructor(private productService: ProductsService) { 
-    this.productService.getProducts()
+  constructor(private productService: ProductsService, private router:Router) { 
+    this.productService.shopProducts();
   }
   AllProducts$ = this.productService.AllProducts;
   page = 1;
@@ -34,11 +35,53 @@ export class ShopComponent {
   }
   searchText = '';
   selectedColor = '';
-  selectedSizde = '';
-  filterWines(searchBy : string, value : string, price ?: number[]) { //if values R numbers we get seperate variable
-    this.productService.filteProducts(searchBy, value, price)
+  selectedSize = '';
+  filterName() { 
+      const newQueryParams = {
+      name : this.searchText,   
+    };
+     this.router.navigate(['shop'], {
+      queryParams: newQueryParams,
+      queryParamsHandling: 'merge'
+     });
+     this.productService.shopProducts();
+
   }
- 
+  filterColor() { 
+    const newQueryParams = {
+      color : this.selectedColor,   
+    };
+     this.router.navigate(['shop'], {
+      queryParams: newQueryParams,
+      queryParamsHandling: 'merge'
+     });
+     this.productService.shopProducts();
+
+  }
+  filterSize() { 
+    const newQueryParams = {
+      size : this.selectedSize,   
+    };
+     this.router.navigate(['shop'], {
+      queryParams: newQueryParams,
+      queryParamsHandling: 'merge'
+     });
+     this.productService.shopProducts();
+
+  }
+  filterPrice(range: number[]) { 
+    const newQueryParams = {
+      priceStart: range[0],
+      priceMax:range[1]
+    };
+     this.router.navigate(['shop'], {
+      queryParams: newQueryParams,
+      queryParamsHandling: 'merge'
+     });
+     this.productService.shopProducts();
+
+
+  }
   
   
 }
