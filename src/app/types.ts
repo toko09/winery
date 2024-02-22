@@ -10,3 +10,11 @@ export interface Product {
     grape: string,
     year: number 
 }
+export interface cartProduct { 
+    quantity: number,
+    id: number,
+    name : string,
+    price: number,
+    imageUrl: string,
+    color: string,
+}

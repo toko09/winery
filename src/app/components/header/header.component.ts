@@ -1,6 +1,9 @@
 import {  Component, ElementRef, HostListener, Renderer2, RendererStyleFlags2 } from '@angular/core';
 import {  Router } from '@angular/router';
 import { TranslocoService } from '@ngneat/transloco';
+import { ProductsService } from '../../services/products.service';
+import { JsonPipe } from '@angular/common';
+import { cartProduct } from '../../types';
 
 @Component({
   selector: 'app-header',
@@ -11,10 +14,11 @@ export class HeaderComponent  {
   constructor(private translocoService: TranslocoService,
     private router: Router,
     private el: ElementRef,
-    private render: Renderer2) { 
+    private render: Renderer2,
+    private productsService: ProductsService
+  ) { 
     //
     //
-    //gotta fix this queryParams bro 
     
     let langCode = localStorage.getItem('langCode');      //get url langcode
     
@@ -27,6 +31,9 @@ export class HeaderComponent  {
     else { this.langGeo = false}
 
   }
+
+  cartNum$ = this.productsService.cartNum;
+  cartProducts$ = this.productsService.cartProducts;
   langGeo = false;
 
   dropdown = this.el.nativeElement.querySelector('.dropdown');
@@ -111,10 +118,16 @@ export class HeaderComponent  {
     }
     if (this.isOpenLangBar) { 
       this.openDropdown()
-    }
-      
+    }      
   }
+  
 
+  openCart() { 
+      // console.log(this.cartProducts$)
+  }
+  removeFromcart(wine: cartProduct) { 
+    this.productsService.removeFromCart(wine);
+  }
 
 
 }

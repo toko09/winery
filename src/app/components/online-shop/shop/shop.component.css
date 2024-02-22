@@ -83,6 +83,13 @@ label{
     border-right: 1px solid white;
     padding-right: 10px;
 }
+.cart{
+    position: fixed;
+    right: 0;
+    top: 14vh;
+    background-color: rebeccapurple;
+
+}
 
 @media (width < 1200px){
     .filters{
@@ -108,9 +115,7 @@ label{
     .colorDiv,.sizeDiv{
         gap: 4px;
     }
-    .searchDiv > input{
-        /* width: 200px; */
-    }
+
     .title{
         font-size: 40px;
         color: white;
@@ -128,6 +133,7 @@ label{
     .smallerGeo{
         font-size: 1.8rem;
     }
+    
 
 }
 @media (width <= 320px){

@@ -51,6 +51,7 @@
 
   </div>
 
+
   <div *ngIf="AllProducts$ | async as all" class="products">
     <app-card-shop *ngFor="let wine of all" [cardData]="wine"> </app-card-shop>    
   </div>

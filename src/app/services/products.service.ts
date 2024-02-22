@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Product } from '../types';
+import { Product, cartProduct } from '../types';
 import { BehaviorSubject, Subscription, filter, map, takeUntil } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { TranslocoService } from '@ngneat/transloco';
@@ -11,15 +11,35 @@ import { TranslocoService } from '@ngneat/transloco';
 export class ProductsService {
   private apiUrl = 'assets/API/products.json'; // Path to your local JSON file
 
-  constructor(private http: HttpClient, private actRoute: ActivatedRoute, private translocoService: TranslocoService) {}
+  constructor(
+    private http: HttpClient,
+    private actRoute: ActivatedRoute,
+    private translocoService: TranslocoService) {
+    
+    const storedItems = localStorage.getItem('cart');
+    if (storedItems) { 
+      this.CartProducts$.next(JSON.parse(storedItems));
+      this.cartNum$.next(JSON.parse(storedItems).length)
+      // console.log('used stored cart' + storedItems)
+    }
+     }
 
   private httpSubscription: Subscription = new Subscription();
   private routerSubscription: Subscription = new Subscription();
 
   private AllProducts$ = new BehaviorSubject<Product[]>([]);
+  private CartProducts$ = new BehaviorSubject<cartProduct[]>([]);
+  private cartNum$ = new BehaviorSubject<number>(0)
 
   get AllProducts() {
     return this.AllProducts$.asObservable();
+  }
+  get cartProducts() { 
+    return this.CartProducts$.asObservable()
+  }
+  
+  get cartNum() { 
+    return this.cartNum$.asObservable()
   }
 
   getProducts() {
@@ -61,5 +81,53 @@ export class ProductsService {
         this.AllProducts$.next(response);
       });
   }
-  
+
+  addToCart(wine: cartProduct) { 
+    let exists = false;
+
+    const cartProd: cartProduct[] = this.CartProducts$.getValue();//current cart
+
+    for (const prods of cartProd) { //check quantity
+      if (prods.id == wine.id) {
+        prods.quantity += 1;
+        localStorage.setItem('cart', JSON.stringify(cartProd));
+        exists = true;
+        break;
+      }
+    }
+    if (!exists) {  
+      cartProd.push(wine);
+      exists = false;
+
+    }  
+
+    localStorage.setItem('cart', JSON.stringify(cartProd));
+
+    this.CartProducts$.next(cartProd);
+
+    this.cartNum$.next(cartProd.length);
+  }
+  removeFromCart(wine: cartProduct) { 
+    let cartProd: cartProduct[] = this.CartProducts$.getValue();//current cart
+
+    for (const prods of cartProd) { //check quantity
+      if (prods.id == wine.id) {
+        prods.quantity -= 1;
+        let index = cartProd.indexOf(wine)
+        if (prods.quantity <= 0) {
+          console.log('removed')
+          cartProd = cartProd.slice(index, 1);
+          localStorage.setItem('cart', JSON.stringify(cartProd));
+          //
+          //remove not removing
+
+        }
+        localStorage.setItem('cart', JSON.stringify(cartProd));
+        break;
+      }
+    }
+
+  }
+
+
 }

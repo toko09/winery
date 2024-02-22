@@ -11,6 +11,7 @@ nav{
     font-size: 1.5rem;
     z-index: 100;
     transition: all 500ms ease-out;
+    /* position: relative; */
 }
 .navExpanded{
     background-color: transparent;
@@ -113,10 +114,58 @@ nav{
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
+.cartbtn{
+    color: #008080;
+    background-color: inherit;
+    border: none;
+    font-size: 2rem;
+    position: relative;
+    padding: 0 10px;
+}
+.cartbtn>p{
+    font-size: 1rem;
+    color: #c5832b;
+    text-align: right;
+    margin-bottom: -10px;
+    font-weight: 900;
+    position: absolute;
+    z-index: 2;
+    right: 35%;
+    top: 0px;
+}
+.cartbtn:hover >p{
+    color: #008080;
+}
+.cartbtn:hover >i{
+    color: #c5832b;
+}
+.cartDiv{
+    position: fixed;
+    width: 300px;
+    height: 500px;
+    top: 14vh;
+    right: 0;
+    background-color: rebeccapurple;
+    z-index: 99;
+    overflow-y: scroll;
 
-
-
-  
+}
+.cart{
+    display: flex;
+    flex-direction: row;
+}
+.cartImg{
+    width: 100px;
+    height: 150px;
+}
+.infoDiv{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
 
 @media (hover: hover) {
     .btnlang:hover { color: burlywood }

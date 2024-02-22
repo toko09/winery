@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Product } from '../../types';
+import { Product, cartProduct } from '../../types';
+import { ProductsService } from '../../services/products.service';
 
 @Component({
   selector: 'app-card-shop',
@@ -9,7 +10,16 @@ import { Product } from '../../types';
 export class CardShopComponent {
   @Input() cardData !: Product
   
+  constructor(private productsService: ProductsService) { }
+
   addToCart(wine:Product) {
-      console.log(wine)
-   }
+    this.productsService.addToCart({
+      quantity: 1,
+      id: wine.id,
+      name : wine.name,
+      price: wine.price,
+      imageUrl: wine.imageUrl,
+      color: wine.color,
+    })
+  }
 }

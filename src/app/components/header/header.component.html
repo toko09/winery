@@ -70,4 +70,23 @@
       />
     </div>
   </button>
+  <button class="cartbtn" (click)="openCart()">
+      <p>{{ cartNum$ | async }}</p>
+    <i class="fa-solid fa-cart-shopping">
+    </i></button>
 </nav>
+<div  class="cartDiv">
+  <div *ngIf="cartProducts$ | async as all" class="products">
+    <div class="cart" *ngFor="let wine of all" >
+      <div class="imgDiv">
+        <img class="cartImg" [src]="wine.imageUrl" alt="">
+      </div>
+      <div class="infoDiv">
+        <h1>{{wine.name}}</h1>
+        <h3>{{wine.price}}  X  {{wine.quantity}}  = {{wine.price * wine.quantity}}</h3>
+        <button (click)="removeFromcart(wine)"><i class="fa-solid fa-trash"></i></button>
+      </div>  
+        
+    </div>
+  </div>
+</div>
