@@ -16,14 +16,18 @@ export class HeaderComponent  {
     //
     //gotta fix this queryParams bro 
     
-    let langCode = window.location.href.slice(-2);      //get url langcode
+    let langCode = localStorage.getItem('langCode');      //get url langcode
     
-    if (langCode === '0/') {                            //set lang query after creating 
+    if (langCode == null) {                            //set lang query after creating 
       this.router.navigate([], { queryParams: { lang: 'en' } })
       langCode = 'en'; 
     }
     this.translocoService.setActiveLang(langCode);
+    if (langCode == 'ge') { this.langGeo = true }
+    else { this.langGeo = false}
+
   }
+  langGeo = false;
 
   dropdown = this.el.nativeElement.querySelector('.dropdown');
   isOpenLangBar = false;
@@ -51,6 +55,12 @@ export class HeaderComponent  {
     this.translocoService.setActiveLang(`${code}`);//
     // console.log(code)
     this.router.navigate([], { queryParams: { lang: code } });
+    localStorage.setItem('langCode', code)
+
+
+    if (code == 'ge') { this.langGeo = true }
+    else { this.langGeo = false}
+
   }
 
   

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ProductsService } from '../../../services/products.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-shop',
@@ -15,12 +15,21 @@ export class ShopComponent {
   ];
   working = !false;
 
-  constructor(private productService: ProductsService, private router:Router) { 
+  constructor(private productService: ProductsService, private router: Router, private actRoute : ActivatedRoute) { 
+    
+    const queryParams = this.actRoute.snapshot.queryParams
+    console.log(queryParams['color'])
+    if (queryParams['name']) { this.searchText = queryParams['name'] };
+    if (queryParams['color']) { this.selectedColor = queryParams['color'] };
+    if (queryParams['size']) { this.selectedSize = queryParams['size'] };
+    if (queryParams['lang'] != 'en') { this.langGeo = true } else { this.langGeo =false} 
+
+
     this.productService.shopProducts();
   }
   AllProducts$ = this.productService.AllProducts;
   page = 1;
-  
+  langGeo = false
 
   rangeSliderDisplay = 'none';
   toggleRangeSlider() { 

@@ -9,4 +9,7 @@ import { Product } from '../../types';
 export class CardShopComponent {
   @Input() cardData !: Product
   
+  addToCart(wine:Product) {
+      console.log(wine)
+   }
 }

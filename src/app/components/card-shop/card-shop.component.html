@@ -1,16 +1,22 @@
-<div class="card-container">
-  <div class="imgDiv">
-    <img [src]="cardData.imageUrl" t="" />
+<div class="mainDiv">
+  <div class="card-container">
+    <div class="imgDiv">
+      <img [src]="cardData.imageUrl" t="" />
+    </div>
+    <div class="infoDiv">
+      <h2>{{ "Name" | transloco }} : {{ cardData.name | transloco }}</h2>
+      <p>{{ "Color" | transloco }} : {{ cardData.color | transloco }}</p>
+      <p>{{ "Alcohol" | transloco }} : {{ cardData.alcohol }}%</p>
+      <p>{{ "Grape" | transloco }} : {{ cardData.grape | lineTranslate }}</p>
+      <p>{{ "Aroma" | transloco }} : {{ cardData.aroma | lineTranslate }}</p>
+      <p class="lari">
+        {{ "Price" | transloco }} : {{ cardData.price
+        }}<i class="fa-solid fa-lari-sign"></i>
+      </p>
+      <p>{{ "Year" | transloco }} : {{ cardData.year }}</p>
+    </div>
   </div>
-  <div class="infoDiv">
-    <h2>{{'Name'   | transloco}} : {{cardData.name | transloco}}  </h2>
-        <p>{{"Color"   | transloco}} :    {{cardData.color | transloco}}</p>
-        <p>{{"Alcohol" | transloco}} : {{cardData.alcohol}}%</p>
-        <p>{{"Grape"   | transloco}} : {{cardData.grape | lineTranslate}} </p>
-        <p>{{"Aroma"   | transloco}} : {{cardData.aroma | lineTranslate}}</p>
-        <p class="lari">{{"Price"   | transloco}} :  {{cardData.price }}<i class='fa-solid fa-lari-sign'></i>
-        </p>
-        <p>{{"Year"    | transloco}} : {{cardData.year}}</p>
+  <div class="buttons">
+    <button (click)="addToCart(cardData)" class="addbtn" >Add To Cart <i class="fa-solid fa-cart-shopping"></i></button>
   </div>
 </div>
-

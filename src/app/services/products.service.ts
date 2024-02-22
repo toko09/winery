@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Product } from '../types';
 import { BehaviorSubject, Subscription, filter, map, takeUntil } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { TranslocoService } from '@ngneat/transloco';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ProductsService {
   private apiUrl = 'assets/API/products.json'; // Path to your local JSON file
 
-  constructor(private http: HttpClient, private actRoute: ActivatedRoute) {}
+  constructor(private http: HttpClient, private actRoute: ActivatedRoute, private translocoService: TranslocoService) {}
 
   private httpSubscription: Subscription = new Subscription();
   private routerSubscription: Subscription = new Subscription();
@@ -35,14 +36,13 @@ export class ProductsService {
       .subscribe((response) => {
         this.routerSubscription = this.actRoute.queryParams.subscribe(
           (params) => {
-            // console.log(params['color'])
             if (params['name']) {
-              response = response.filter((products) =>
-                products.name.toLocaleLowerCase().includes(params['name'])
+              response = response.filter((products) => 
+                this.translocoService.translate(products.name).toLocaleLowerCase().includes(params['name'])
               );
             }
             if (params['size']) {
-              response = response.filter((products) => {}); //Nosize
+              // response = response.filter((products) => {}); 
             }
             if (params['color']) {
               response = response.filter(
@@ -61,4 +61,5 @@ export class ProductsService {
         this.AllProducts$.next(response);
       });
   }
+  
 }

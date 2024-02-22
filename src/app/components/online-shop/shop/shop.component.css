@@ -22,6 +22,7 @@
 }
 .products{
     height: fit-content;
+
     color: white;
     display: flex;
     justify-content: center;
@@ -45,54 +46,89 @@
     padding: 10px 20px;
     text-wrap: nowrap;
 }
+.searchDiv > input{
+    background-color: #1b1b1b;
+    border: none;
+    color: white;
+    overflow: hidden;
+
+}
 .secondLine{
     display: flex;
+    gap: 40px;
 }
 .priceDiv{
     position: relative;
-    flex-direction: column;
-    
+    flex-direction: column;   
 }
-.priceDiv range-slider{
+.priceDiv>button{
+    background-color: inherit;
+    color: white;
+    border: none;
+}
+.priceDiv > range-slider{
     position: absolute;
     top: 60px;
     left: -60px;
 }
-@media (width < 1100px){
-    .searchDiv,.colorDiv,.sizeDiv,.priceDiv{
-        padding: 5px 10px;
-    }
-    .filters{
-        gap: 20px;
-    }
+select{
+    /* background-color: inherit; */
+    border: none;
+    text-align: center;
+    color: inherit;
+    background-color: #1b1b1b;
+
 }
-@media (width < 850px){
-    .filters{    gap: 5px; 
-    }}
-@media (width < 800px){
+label{
+    border-right: 1px solid white;
+    padding-right: 10px;
+}
+
+@media (width < 1200px){
     .filters{
         flex-wrap: wrap;
         padding: 0;
-        gap: 0;
-        font-size: 14px;
+        gap: 10px;
         flex-direction: column;
     }
-    
+    .secondLine{
+        gap: 10px;
+    }
 
+
+    select{
+        text-indent: -10x;
+    }
     .searchDiv,.colorDiv,.sizeDiv,.priceDiv{
         margin-top: 20px;
-        font-size: 1.4rem;
+        font-size: 1rem;
+        padding: 5px 10px;
+
     }
     .colorDiv,.sizeDiv{
-        gap: 2px;
+        gap: 4px;
     }
-
+    .searchDiv > input{
+        /* width: 200px; */
+    }
     .title{
-
         font-size: 40px;
         color: white;
         letter-spacing: 10px;
     }
+    
+}
+@media (width < 400px){
+    .secondLine{
+        flex-direction: column;
+    }
+    .searchDiv{
+        max-width:90%;
+    }
+    .smallerGeo{
+        font-size: 1.8rem;
+    }
+
 }
 @media (width <= 320px){
     .colorDiv,.sizeDiv{
@@ -100,10 +136,13 @@
     }
     select{
         font-size: 10px;
+
+
     }
     .searchDiv{
         gap: 2px;
     }
+
 }
 
 

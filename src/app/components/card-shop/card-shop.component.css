@@ -1,9 +1,12 @@
+.mainDiv{
+    background-color: black;
+
+}
 .card-container{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: black;
-    padding: 40px 40px 40px 0;
+    padding: 40px 40px 10px 0;
 }
 .imgDiv>img{
     height: 200px;
@@ -11,4 +14,53 @@
 }
 .infoDiv>p{
     width: 240px;
+}
+.buttons{
+    padding: 20px 40px;
+    height: 80px;
+}
+.addbtn{
+    background-color:#008080;
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    transition: all 0.3s ease-in-out;
+}
+.addbtn:hover{
+    background-color: #c5832b;
+    padding: 14px 28px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+
+@media (width < 800px){
+    .card-container{
+        padding: 20px 10px 20px 0;
+    }
+    .infoDiv{
+        width: 200px;
+    }
+    .imgDiv>img{
+        height: 180px;
+        width: 130px;
+    }
+    .infoDiv> h2{
+        font-size: 1.2rem;
+    }
+    .infoDiv>p{
+        font-size: 0.9rem;
+        width: inherit;
+    }
+}
+@media(width <360px){
+    .card-container{
+        padding: 20px  0;
+    }
+    .infoDiv{
+        width: 140px;
+    }
+    .infoDiv>p{
+        width: inherit;
+    }
 }

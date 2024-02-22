@@ -2,6 +2,7 @@
   <h1
     (click)="switchPage('home')"
     class="navtitle navelements {{ pseudoClassBorder }}"
+    [class.smallerGeo]="langGeo"
   >
     {{ "title" | transloco }}
   </h1>

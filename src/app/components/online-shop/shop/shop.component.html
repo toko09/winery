@@ -11,35 +11,35 @@
     src="assets/shop-adv/wine_adv4.webp"
     alt=""
   />
-  <h1 class="title">{{ "title" | transloco }}</h1>
+  <h1 [class.smallerGeo]="langGeo" class="title">{{ "title" | transloco }}</h1>
 </div>
 <div class="shop">
-  <div class="filters">
+  <div class="filters" >
 
     <div class="searchDiv">
       <label for="search">{{"Search Wine" | transloco}}</label>
-      <input  [(ngModel)]="searchText" (input)="filterName()" type="text" id="seaerch" />
+      <input  [(ngModel)]="searchText" (input)="filterName()" type="text" id="search" />
     </div>
     <div class="secondLine">
 
-
-    <div class="colorDiv">
-      <label for="color">{{"Wine color" | transloco}}</label>
-      <select [(ngModel)]="selectedColor" (change)="filterColor()" name="color" id="color">
-        <option value="Red">{{ "Red" | transloco }}</option>
-        <option value="White">{{ "White" | transloco }}</option>
-        <option value="Rosé">{{ "Rosé" | transloco }}</option>
-        <option value="Amber">{{ "Amber" | transloco }}</option>
-      </select>
-    </div>
-
-    <div class="sizeDiv">
+      
+      <div class="sizeDiv">
       <label  for="size">{{"Bottle Size" | transloco}}</label>
       <select [(ngModel)]="selectedSize" (change)="filterSize()" name="size" id="size">
         <option value="750">750 {{ "MG" | transloco }}</option>
         <option value="1000">1{{ "Liter" | transloco }}</option>
       </select>
-    </div>
+      </div>
+      <div class="colorDiv">
+      <label for="color">{{"Wine color" | transloco}}</label>
+      <select [(ngModel)]="selectedColor" (change)="filterColor()" name="color" id="color">
+        <option value="Red" >{{ "Red" | transloco }}</option>
+        <option value="White">{{ "White" | transloco }}</option>
+        <option value="Rosé">{{ "Rosé" | transloco }}</option>
+        <option value="Amber">{{ "Amber" | transloco }}</option>
+      </select>
+      </div>
+
   </div>
     <div class="priceDiv">
       <button (click)="toggleRangeSlider()">{{"Price Range" | transloco}}
@@ -52,6 +52,6 @@
   </div>
 
   <div *ngIf="AllProducts$ | async as all" class="products">
-    <app-card-shop *ngFor="let wine of all" [cardData]="wine"></app-card-shop>
+    <app-card-shop *ngFor="let wine of all" [cardData]="wine"> </app-card-shop>    
   </div>
 </div>

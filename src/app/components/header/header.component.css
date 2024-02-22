@@ -201,6 +201,9 @@ nav{
         text-wrap:pretty;
         overflow: hidden;
     }
+    .smallerGeo{
+        font-size: 1.2rem;
+    }
 
     
     
