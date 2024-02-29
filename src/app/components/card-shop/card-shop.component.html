@@ -1,7 +1,7 @@
 <div class="mainDiv">
   <div class="card-container">
     <div class="imgDiv">
-      <img [src]="cardData.imageUrl" t="" />
+      <img  [src]="cardData.imageUrl" t="" />
     </div>
     <div class="infoDiv">
       <h2>{{ "Name" | transloco }} : {{ cardData.name | transloco }}</h2>
@@ -17,6 +17,9 @@
     </div>
   </div>
   <div class="buttons">
-    <button (click)="addToCart(cardData)" class="addbtn" >Add To Cart <i class="fa-solid fa-cart-shopping"></i></button>
+    <button   (click)="addToCart(cardData)" class="addbtn" >{{"AddToCart" | transloco}}<i class="fa-solid fa-cart-shopping"></i></button>
+
   </div>
 </div>
+
+

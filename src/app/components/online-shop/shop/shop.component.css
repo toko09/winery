@@ -91,6 +91,7 @@ label{
 
 }
 
+
 @media (width < 1200px){
     .filters{
         flex-wrap: wrap;

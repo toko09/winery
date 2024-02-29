@@ -82,7 +82,11 @@
     "Search Wine":"Search Wine",
     "Wine color" :"Wine color",
     "Bottle Size":"Bottle Size",
-    "Price Range":"Price Range" 
+    "Price Range":"Price Range",
+    
+    "checkout": "Checkout",
+    "AddToCart": "Add To Cart",
+    "total": "Total"
 
  
 

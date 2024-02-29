@@ -83,5 +83,9 @@
     "Search Wine":"სახელით ძებნა",
     "Wine color" :"ფერი",
     "Bottle Size":"ბოთლის ზომა",
-    "Price Range":"ფასი" 
+    "Price Range":"ფასი",
+    
+    "checkout": "შეძენა",
+    "AddToCart": "კალათაში დამატება",
+    "total": "ჯამი"
 }

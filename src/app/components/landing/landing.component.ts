@@ -14,7 +14,6 @@ export class LandingComponent {
   @HostListener('window:scroll', [])
   onWindowScroll() {
     const scrollPosition = window.scrollY;
-    const windowHeight = window.innerHeight;
     const floatingPhoto = this.el.nativeElement.querySelector('#floatingPhoto');
     const PhotoDivOffset = floatingPhoto.offsetTop;
     const floatingText = this.el.nativeElement.querySelector('#floatingText');

@@ -4,6 +4,7 @@ import { Product, cartProduct } from '../types';
 import { BehaviorSubject, Subscription, filter, map, takeUntil } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { TranslocoService } from '@ngneat/transloco';
+import { JsonPipe } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
@@ -20,6 +21,7 @@ export class ProductsService {
     if (storedItems) { 
       this.CartProducts$.next(JSON.parse(storedItems));
       this.cartNum$.next(JSON.parse(storedItems).length)
+      this.getTotalPrice()
       // console.log('used stored cart' + storedItems)
     }
      }
@@ -30,16 +32,19 @@ export class ProductsService {
   private AllProducts$ = new BehaviorSubject<Product[]>([]);
   private CartProducts$ = new BehaviorSubject<cartProduct[]>([]);
   private cartNum$ = new BehaviorSubject<number>(0)
-
+  private cartPrice$ = new BehaviorSubject<number>(0);
+  
   get AllProducts() {
     return this.AllProducts$.asObservable();
   }
   get cartProducts() { 
     return this.CartProducts$.asObservable()
   }
-  
   get cartNum() { 
     return this.cartNum$.asObservable()
+  }
+  get cartPrice() { 
+    return this.cartPrice$.asObservable()
   }
 
   getProducts() {
@@ -83,6 +88,9 @@ export class ProductsService {
   }
 
   addToCart(wine: cartProduct) { 
+
+    
+
     let exists = false;
 
     const cartProd: cartProduct[] = this.CartProducts$.getValue();//current cart
@@ -106,6 +114,9 @@ export class ProductsService {
     this.CartProducts$.next(cartProd);
 
     this.cartNum$.next(cartProd.length);
+
+
+    this.getTotalPrice()
   }
   removeFromCart(wine: cartProduct) { 
     let cartProd: cartProduct[] = this.CartProducts$.getValue();//current cart
@@ -114,20 +125,29 @@ export class ProductsService {
       if (prods.id == wine.id) {
         prods.quantity -= 1;
         let index = cartProd.indexOf(wine)
+        // console.log(cartProd)
         if (prods.quantity <= 0) {
-          console.log('removed')
-          cartProd = cartProd.slice(index, 1);
-          localStorage.setItem('cart', JSON.stringify(cartProd));
-          //
-          //remove not removing
-
+          cartProd.splice(index, 1)
+          this.CartProducts$.next(cartProd);
+          this.cartNum$.next(cartProd.length);
         }
         localStorage.setItem('cart', JSON.stringify(cartProd));
         break;
       }
     }
+    this.getTotalPrice()
 
   }
 
 
+  getTotalPrice() {
+    let sum = 0;
+    let cartProd: cartProduct[] = this.CartProducts$.getValue();//current cart
+    for (const prod of cartProd) { 
+      sum += (prod.price * prod.quantity)
+    } 
+    this.cartPrice$.next(sum)
+
+  }
+  
 }

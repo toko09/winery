@@ -6,7 +6,7 @@
   >
     {{ "title" | transloco }}
   </h1>
-  <div class="navh3s  ">
+  <div class="navh3s">
     <h3
       (click)="openHamNav()"
       (click)="switchPage('home')"
@@ -49,7 +49,7 @@
   </button>
   <button class="btnlang" (click)="openDropdown()">
     <i class="fa-solid fa-globe"></i>
-    <div class="dropdown"   >
+    <div class="dropdown">
       <img
         (click)="changeLang('en')"
         class="flag"
@@ -71,22 +71,34 @@
     </div>
   </button>
   <button class="cartbtn" (click)="openCart()">
-      <p>{{ cartNum$ | async }}</p>
-    <i class="fa-solid fa-cart-shopping">
-    </i></button>
+    <p>{{ cartNum$ | async }}</p>
+    <i class="fa-solid fa-cart-shopping"> </i>
+  </button>
 </nav>
-<div  class="cartDiv">
+
+<div class="cartDiv">
   <div *ngIf="cartProducts$ | async as all" class="products">
-    <div class="cart" *ngFor="let wine of all" >
+    <div class="cart" *ngFor="let wine of all">
       <div class="imgDiv">
-        <img class="cartImg" [src]="wine.imageUrl" alt="">
+        <img class="cartImg" [src]="wine.imageUrl" alt="" />
       </div>
       <div class="infoDiv">
-        <h1>{{wine.name}}</h1>
-        <h3>{{wine.price}}  X  {{wine.quantity}}  = {{wine.price * wine.quantity}}</h3>
-        <button (click)="removeFromcart(wine)"><i class="fa-solid fa-trash"></i></button>
-      </div>  
-        
+        <h1>{{ wine.name }}</h1>
+        <h3>
+          {{ wine.price }} X {{ wine.quantity }} =
+          {{ calculatePrice(wine.price, wine.quantity) }} 
+          <i class="fa-solid fa-lari-sign"></i>
+        </h3>
+        <button class="btnRemove" (click)="removeFromcart(wine)">
+          <i class="fa-solid fa-trash"></i>
+        </button>
+      </div>
     </div>
+  </div>
+  <div class="cartButtons">
+    <h2 class="totalPrice" >{{"total" | transloco}}: {{cartTotalPrice$ | async}}
+       <i class="fa-solid fa-lari-sign"></i>
+      </h2>
+    <button class="btnCheckout">{{"checkout" | transloco}}</button>
   </div>
 </div>

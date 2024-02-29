@@ -12,8 +12,9 @@ export class CardShopComponent {
   
   constructor(private productsService: ProductsService) { }
 
-  addToCart(wine:Product) {
-    this.productsService.addToCart({
+  addToCart(wine: Product) {
+    
+        this.productsService.addToCart({
       quantity: 1,
       id: wine.id,
       name : wine.name,

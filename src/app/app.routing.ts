@@ -10,7 +10,7 @@ export const APP_ROUTES: Routes = [
     { path: 'company', component: CompanyComponent },
     { path: 'products', component: ProductsComponent },
     { path: 'contact', component: ContactComponent },
-    { path: 'shop', component:ShopComponent},
+    { path: 'shop', component: ShopComponent },
     { path: '', redirectTo: 'home', pathMatch: 'full'}
   
 ];
