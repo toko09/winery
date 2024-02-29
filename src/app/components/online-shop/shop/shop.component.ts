@@ -13,7 +13,7 @@ export class ShopComponent {
     'assets/shop-adv/wine_adv2.jpg',
     'assets/shop-adv/wine_adv3.jpg', 
   ];
-  working = !false;
+  working = false;
 
   constructor(private productService: ProductsService, private router: Router, private actRoute : ActivatedRoute) { 
     
