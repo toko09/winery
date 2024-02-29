@@ -56,14 +56,23 @@ export class RangeSliderComponent {
     this.circlePosition = this.el.nativeElement.querySelector(`${handle}`).getBoundingClientRect()['x'];    
     
     this.clickDiff = event.x - this.circlePosition;
-
-    // console.log("event.x = " +  event.x)
-    // console.log(this.divPosition);
-    // console.log("clickDiff = " +this.clickDiff)
-    // console.log("circlePOsition = " + this.circlePosition);
-    // console.log("left after change - " + this.leftPosition);
-
   
+  }
+  onTouchStart(event: TouchEvent, handle:'.min' | '.max') { 
+
+    event.preventDefault();
+    this.minOrMax = handle;
+    
+    this.isDragging = true;
+
+    this.divPosition = this.el.nativeElement.querySelector('.range').getBoundingClientRect()['x'];
+
+    this.circlePosition = this.el.nativeElement.querySelector(`${handle}`).getBoundingClientRect()['x'];    
+    
+    this.clickDiff = event.touches[0].clientX - this.circlePosition;
+
+
+
   }
 
 
@@ -73,36 +82,48 @@ export class RangeSliderComponent {
       let calculatedPosition = event.x - this.clickDiff - this.divPosition;
 
       if (calculatedPosition >= 0 && calculatedPosition <= 201) { 
-
         
         if (this.minOrMax == '.min' && calculatedPosition < this.rightPosition - 19) {
           this.leftPosition = Math.floor(calculatedPosition / 10) * 10;
           this.line_start = this.leftPosition + 8;
           this.line_width = this.rightPosition - this.leftPosition;
           this.values[0] = this.leftPosition;
-          this.rangeValues.emit(this.values);
-          // this.values$.next (this.values)
-          // console.log("values: min - " + this.leftPosition + "max - " + this.rightPosition)
-          
+          this.rangeValues.emit(this.values);   
         }
         else if (this.minOrMax == '.max' && calculatedPosition > this.leftPosition + 20) {
           this.rightPosition = Math.floor(calculatedPosition / 10) * 10;
           this.line_width = this.rightPosition - this.leftPosition;
           this.values[1] = this.rightPosition;
           this.rangeValues.emit(this.values);
-
-          // this.values$.next (this.values)
-
-          // console.log("values: min - " + this.leftPosition + "max - " + this.rightPosition)
-
-          
         }
       }
-
-
-
     }
   }
+
+  @HostListener('document:touchmove', ['$event'])
+  onTouchMove(event: TouchEvent) { 
+    if (this.isDragging) {
+      let calculatedPosition = event.touches[0].clientX - this.clickDiff - this.divPosition;
+
+      if (calculatedPosition >= 0 && calculatedPosition <= 201) { 
+        
+        if (this.minOrMax == '.min' && calculatedPosition < this.rightPosition - 19) {
+          this.leftPosition = Math.floor(calculatedPosition / 10) * 10;
+          this.line_start = this.leftPosition + 8;
+          this.line_width = this.rightPosition - this.leftPosition;
+          this.values[0] = this.leftPosition;
+          this.rangeValues.emit(this.values);   
+        }
+        else if (this.minOrMax == '.max' && calculatedPosition > this.leftPosition + 20) {
+          this.rightPosition = Math.floor(calculatedPosition / 10) * 10;
+          this.line_width = this.rightPosition - this.leftPosition;
+          this.values[1] = this.rightPosition;
+          this.rangeValues.emit(this.values);
+        }
+      }
+    }
+  }
+
 
 
 
@@ -111,5 +132,10 @@ export class RangeSliderComponent {
   @HostListener('document:mouseup')
   onMouseUp() {
     this.isDragging = false;
+  }
+  @HostListener('document:touchend')
+  onTouchEnd() { 
+    this.isDragging = false;
+
   }
 }

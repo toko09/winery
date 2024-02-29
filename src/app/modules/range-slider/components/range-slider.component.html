@@ -1,13 +1,15 @@
 <div class="range">
 
-    <div class="min" (mousedown)="onMouseDown($event, '.min')" [style.left.px]="leftPosition" >
+    <div class="min" (touchstart)="onTouchStart($event, '.min')" 
+    (mousedown)="onMouseDown($event, '.min')"  [style.left.px]="leftPosition" >
         <i class="fa-solid fa-circle"></i>
         <p class="valueMin">{{values[0]}}</p>
     </div>
     <div class="line" [style.width.px]="line_width" [style.left.px]="line_start" >
 
     </div>
-    <div class="max" (mousedown)="onMouseDown($event, '.max')" [style.left.px]="rightPosition" >
+    <div class="max" (touchstart)="onTouchStart($event, '.max')" 
+    (mousedown)="onMouseDown($event, '.max')" [style.left.px]="rightPosition" >
         <i class="fa-solid fa-circle"></i>
         <p class="valueMax">{{values[1]}}</p>
     </div>
