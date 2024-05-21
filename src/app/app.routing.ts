@@ -11,6 +11,6 @@ export const APP_ROUTES: Routes = [
     { path: 'products', component: ProductsComponent },
     { path: 'contact', component: ContactComponent },
     { path: 'shop', component: ShopComponent },
-    // { path: '', redirectTo: 'home', pathMatch: 'full'}
+    { path: '', redirectTo: 'home', pathMatch: 'full'}
   
 ];
